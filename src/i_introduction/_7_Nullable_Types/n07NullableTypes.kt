@@ -25,7 +25,24 @@ fun todoTask7(client: Client?, message: String?, mailer: Mailer): Nothing = TODO
 fun sendMessageToClient(
         client: Client?, message: String?, mailer: Mailer
 ) {
-    todoTask7(client, message, mailer)
+    val data = client?.personalInfo?.email
+
+    if (data != null && message != null) {
+        mailer.sendMessage(data, message)
+    }
+
+   /* client?.let {
+        client.personalInfo?.let {
+            client.personalInfo.email?.let {
+                message?.let {
+                    mailer.sendMessage(client.personalInfo.email, message)
+                }
+            }
+        }
+    }*/
+
+
+
 }
 
 class Client (val personalInfo: PersonalInfo?)
