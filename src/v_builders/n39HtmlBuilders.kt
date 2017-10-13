@@ -7,6 +7,7 @@ import v_builders.htmlLibrary.*
 
 fun getTitleColor() = "#b9c9fe"
 fun getCellColor(row: Int, column: Int) = if ((row + column) %2 == 0) "#dce4ff" else "#eff2ff"
+fun getFontColor(row: Int, column: Int) = if ((row + column) %2 == 0) "#800000" else "#000000"
 
 fun todoTask39(): Nothing = TODO(
     """
@@ -22,7 +23,7 @@ fun todoTask39(): Nothing = TODO(
 fun renderProductTable(): String {
     return html {
         table {
-            tr {
+            tr (getTitleColor()){
                 td {
                     text("Product")
                 }
@@ -34,7 +35,36 @@ fun renderProductTable(): String {
                 }
             }
             val products = getProducts()
-            todoTask39()
+
+            for((index, item) in products.withIndex()){
+                tr {
+                    td (getCellColor(index,1), getFontColor(index,1)){
+                        text(item.description)
+                    }
+                    td (getCellColor(index,2), getFontColor(index,2)){
+                        text(item.price)
+                    }
+                    td (getCellColor(index,3), getFontColor(index,3)){
+                        text(item.popularity)
+                    }
+                }
+            }
+            /*var count = 0
+            products.forEach {
+                count++
+                tr {
+                    td (getCellColor(count,1)){
+                        text(it.description)
+                    }
+                    td (getCellColor(count,2)){
+                        text(it.price)
+                    }
+                    td (getCellColor(count,3)){
+                        text(it.popularity)
+                    }
+                }
+            }*/
+
         }
     }.toString()
 }

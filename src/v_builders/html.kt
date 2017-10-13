@@ -47,7 +47,7 @@ fun Html.center(init : Center.() -> Unit) = doInit(Center(), init)
 
 fun Table.tr(color: String? = null, init : TR.() -> Unit) = doInit(TR(), init).set("bgcolor", color)
 
-fun TR.td(color: String? = null, align : String = "left", init : TD.() -> Unit) = doInit(TD(), init).set("align", align).set("bgcolor", color)
+fun TR.td(color: String? = null, textColor : String? = null, align : String = "left", init : TD.() -> Unit) = doInit(TD(), init).set("align", align).set("bgcolor", color).set("color", textColor)
 
 fun Tag.text(s : Any?) = doInit(Text(s.toString()), {})
 
